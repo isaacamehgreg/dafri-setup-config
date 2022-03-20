@@ -1,0 +1,17 @@
+version: "3.3"
+
+networks:
+  dafri_network:
+#    name: dafri_network
+    driver: bridge
+
+services:
+
+  dafri_blog:
+    image: 477107143084.dkr.ecr.us-east-1.amazonaws.com/dafri_blog-prod:latest
+    container_name: dafri_blog
+    restart: unless-stopped
+    ports:
+      - ${FRONT_HTTP_PORT}:3000
+    networks:
+      - dafri_network
